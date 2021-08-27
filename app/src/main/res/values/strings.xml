@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">MondiaMusic</string>
+
+    <!-- Base -->
+    <string name="error_message">Error Message</string>
+    <string name="success_message">Success Message</string>
+
+    <!-- Home -->
+    <string name="home_albums_title">New Albums</string>
+    <string name="home_albums_song_name">Song name</string>
+    <string name="home_album_artist_name">Artist name</string>
+    <string name="home_song_title">Just for you</string>
+    <string name="home_song_name">Song name</string>
+    <string name="home_song_artist_name">Artist name</string>
+    <string name="home_search_title">Search</string>
+
+
+
+    <!--Errors -->
+     <!-- base errors-->
+    <string name="error_no_connection">Oops , there\'s no Network connection</string>
+    <string name="error_message_title">Error!</string>
+    <string name="success_message_title">Success</string>
+
+</resources>
