@@ -1,10 +1,12 @@
 package com.mondia.model.entity.home
 
+import android.os.Parcel
+import android.os.Parcelable
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import com.mondia.BR
 
-class Album : BaseObservable() {
+class Album() : BaseObservable() , Parcelable {
 
     @get:Bindable
     var albumID: Int = 0
@@ -18,6 +20,13 @@ class Album : BaseObservable() {
         set(value) {
             field = value
             notifyPropertyChanged(BR.albumType)
+        }
+
+    @get:Bindable
+    var albumImage: String = ""
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.albumImage)
         }
 
     @get:Bindable
@@ -49,10 +58,38 @@ class Album : BaseObservable() {
         }
 
     @get:Bindable
-    var numberOfTracks: Int=0
+    var albumNumberOfTracks: Int=0
         set(value) {
             field = value
-            notifyPropertyChanged(BR.numberOfTracks)
+            notifyPropertyChanged(BR.albumNumberOfTracks)
         }
+
+    @get:Bindable
+    var albumLabel: String=""
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.albumLabel)
+        }
+
+    constructor(parcel: Parcel) : this() {
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<Album> {
+        override fun createFromParcel(parcel: Parcel): Album {
+            return Album(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Album?> {
+            return arrayOfNulls(size)
+        }
+    }
 
 }

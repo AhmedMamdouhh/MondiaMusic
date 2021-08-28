@@ -2,11 +2,11 @@ package com.mondia.manager.base
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import com.mondia.R
 import com.mondia.databinding.ActivityMainBinding
-import com.mondia.ui.home.HomeFragment
+import com.mondia.manager.utilities.Constants
+import com.mondia.manager.utilities.navigationExtension
+import com.mondia.ui.splash.SplashFragment
 
 
 class MainActivity : BaseActivity() {
@@ -17,19 +17,8 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        navigation()
+        navigationExtension(supportFragmentManager, SplashFragment(),Constants.SPLASH_FRAGMENT,"","")
     }
 
-    fun navigation(){
-        var fragment: Fragment?
 
-        val fm = supportFragmentManager
-        fragment = fm.findFragmentByTag("myFragmentTag")
-        if (fragment == null) {
-            val ft: FragmentTransaction = fm.beginTransaction()
-            fragment = HomeFragment()
-            ft.add(android.R.id.content, fragment, "myFragmentTag")
-            ft.commit()
-        }
-    }
 }

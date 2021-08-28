@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mondia.databinding.ItemSongBinding
 import com.mondia.model.entity.home.Song
 import com.mondia.ui.home.HomeViewModel
-import com.mondia.ui.home.albums.AlbumsViewHolder
 
 class SongsAdapter(
     private val songsList: ArrayList<Song>,
@@ -24,5 +23,13 @@ class SongsAdapter(
 
     override fun getItemCount(): Int {
         return songsList.size
+    }
+
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return position
     }
 }

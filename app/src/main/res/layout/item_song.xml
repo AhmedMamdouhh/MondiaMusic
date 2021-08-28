@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/dp8w"
         android:orientation="vertical"
-        android:onClick="@{()->songListener.onSongsClicked()}"
+        android:onClick="@{()->songListener.onSongsClicked(songObject)}"
         android:layout_marginRight="@dimen/dp8w">
 
 
@@ -32,16 +32,18 @@
             android:id="@+id/cv_song_image"
             android:layout_width="@dimen/dp240w"
             android:layout_height="@dimen/dp190w"
-            app:cardCornerRadius="@dimen/dp8w"
-            card_view:cardElevation="@dimen/dp5w">
+            app:cardCornerRadius="@dimen/dp24w"
+            card_view:cardElevation="@dimen/dp8w"
+            android:elevation="@dimen/dp8w"
+            tools:targetApi="lollipop">
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_song_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/img_song_cover"
-                tools:ignore="ContentDescription" />
+                app:imageUrl="@{songObject.songImage}"
+                android:src="@drawable/img_song_cover" />
 
         </androidx.cardview.widget.CardView>
         <!-- Song name -->
@@ -51,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp8w"
             android:layout_marginEnd="@dimen/dp8w"
-            android:fontFamily="@font/montserrat_semi_bold"
+            android:fontFamily="@font/fredoka_one_regular"
             android:text="@string/home_song_name"
             app:text="@{songObject.songTitle}"
             android:textColor="@color/colorPrimaryDark"
@@ -63,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp8w"
             android:layout_marginEnd="@dimen/dp8w"
-            android:fontFamily="@font/montserrat_regular"
+            android:fontFamily="@font/fredoka_one_regular"
             android:singleLine="false"
             android:text="@string/home_song_artist_name"
             app:text="@{songObject.songArtist}"

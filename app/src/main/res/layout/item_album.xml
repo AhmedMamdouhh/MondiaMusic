@@ -2,7 +2,6 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -29,18 +28,22 @@
         <!-- album image -->
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_album_image"
-            android:layout_width="@dimen/dp120w"
+            android:layout_width="@dimen/dp150w"
             android:layout_height="@dimen/dp120w"
-            app:cardCornerRadius="@dimen/dp8w"
-            card_view:cardElevation="@dimen/dp5w">
+            app:cardCornerRadius="@dimen/dp21w"
+            android:onClick="@{()->albumsListener.onAlbumsClicked(albumsObject)}"
+            card_view:cardElevation="@dimen/dp5w"
+            app:elevation="@dimen/dp8w"
+            >
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_album_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 android:src="@drawable/img_album_cover"
-                tools:ignore="ContentDescription" />
+                android:adjustViewBounds="true"
+                app:imageUrl="@{albumsObject.albumImage}" />
 
         </androidx.cardview.widget.CardView>
         <!-- album name -->
@@ -50,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp8w"
             android:layout_marginEnd="@dimen/dp8w"
-            android:fontFamily="@font/montserrat_semi_bold"
+            android:fontFamily="@font/fredoka_one_regular"
             android:text="@string/home_albums_song_name"
             app:text="@{albumsObject.albumTitle}"
             android:textColor="@color/colorPrimaryDark"
@@ -62,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp8w"
             android:layout_marginEnd="@dimen/dp8w"
-            android:fontFamily="@font/montserrat_regular"
+            android:fontFamily="@font/fredoka_one_regular"
             android:singleLine="false"
             android:text="@string/home_album_artist_name"
             app:text="@{albumsObject.albumArtist}"

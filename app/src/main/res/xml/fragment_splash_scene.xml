@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <!-- START TO MIDDLE -->
+    <Transition
+        android:id="@+id/transition_splash_first"
+        motion:constraintSetEnd="@+id/middle"
+        motion:constraintSetStart="@+id/start"
+        motion:duration="1500">
+
+        <KeyFrameSet>
+            <KeyAttribute
+                android:scaleX="1.8"
+                android:scaleY="1.8"
+                motion:framePosition="20"
+                motion:motionTarget="@+id/tv_splash_company_name" />
+
+            <KeyAttribute
+                android:scaleX="0.8"
+                android:scaleY="0.8"
+                motion:framePosition="40"
+                motion:motionTarget="@+id/tv_splash_company_name" />
+
+            <KeyAttribute
+                android:scaleX="2.0"
+                android:scaleY="2.0"
+                motion:framePosition="80"
+                motion:motionTarget="@+id/tv_splash_company_name" />
+
+        </KeyFrameSet>
+
+    </Transition>
+
+    <!-- MIDDLE TO END -->
+    <Transition
+        android:id="@+id/transition_splash_second"
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@+id/middle"
+        motion:duration="1000">
+
+        <KeyFrameSet>
+            <KeyAttribute
+                android:scaleX="2"
+                android:scaleY="2"
+                motion:framePosition="20"
+                motion:motionTarget="@+id/aiv_splash_logo" />
+
+            <KeyAttribute
+                android:scaleX="4"
+                android:scaleY="4"
+                motion:framePosition="60"
+                motion:motionTarget="@+id/aiv_splash_logo" />
+
+            <KeyAttribute
+                android:scaleX="5"
+                android:scaleY="5"
+                motion:framePosition="80"
+                motion:motionTarget="@+id/aiv_splash_logo" />
+
+
+        </KeyFrameSet>
+
+    </Transition>
+
+    <!-- Start -->
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/aiv_splash_logo"
+            android:layout_width="@dimen/dp145w"
+            android:layout_height="@dimen/dp145w"
+            android:scaleX="0.0"
+            android:scaleY="0.0"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent">
+
+
+        </Constraint>
+        <Constraint
+            android:id="@+id/tv_splash_company_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp16w"
+            android:alpha="0"
+            android:scaleX="0.9"
+            android:scaleY="0.9"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent">
+            <CustomAttribute
+                motion:attributeName="textColor"
+                motion:customColorValue="@color/colorPrimary" />
+        </Constraint>
+    </ConstraintSet>
+    <!-- Middle -->
+    <ConstraintSet android:id="@+id/middle">
+
+        <Constraint
+            android:id="@+id/aiv_splash_logo"
+            android:layout_width="@dimen/dp145w"
+            android:layout_height="@dimen/dp145w"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"/>
+
+        <Constraint
+            android:id="@+id/tv_splash_company_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp16w"
+            android:scaleX="1.9"
+            android:scaleY="1.9"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/aiv_splash_logo">
+            <CustomAttribute
+                motion:attributeName="textColor"
+                motion:customColorValue="@color/colorRed" />
+        </Constraint>
+
+    </ConstraintSet>
+    <!-- End -->
+    <ConstraintSet android:id="@+id/end">
+        <Constraint android:id="@id/widget" />
+        <Constraint
+            android:id="@+id/aiv_splash_logo"
+            android:layout_width="@dimen/dp145w"
+            android:layout_height="@dimen/dp145w"
+            android:scaleX="0"
+            android:scaleY="0"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:id="@+id/tv_splash_company_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alpha="0"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/aiv_splash_logo" />
+    </ConstraintSet>
+
+
+</MotionScene>

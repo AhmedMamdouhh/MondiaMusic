@@ -9,7 +9,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mondia.R
 
-open class BaseDialogFragment : BottomSheetDialogFragment() {
+open class BaseBottomSheet : BottomSheetDialogFragment() {
     private var bottomSheetBehavior: BottomSheetBehavior<*>? = null
     override fun onStart() {
         super.onStart()

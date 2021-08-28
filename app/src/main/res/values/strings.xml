@@ -5,15 +5,28 @@
     <string name="error_message">Error Message</string>
     <string name="success_message">Success Message</string>
 
+    <!-- Splash -->
+    <string name="splash_comany_name">Mondia</string>
+
     <!-- Home -->
     <string name="home_albums_title">New Albums</string>
     <string name="home_albums_song_name">Song name</string>
     <string name="home_album_artist_name">Artist name</string>
+    <string name="home_album_label">Label</string>
     <string name="home_song_title">Just for you</string>
     <string name="home_song_name">Song name</string>
     <string name="home_song_artist_name">Artist name</string>
     <string name="home_search_title">Search</string>
 
+    <!-- Album Details -->
+    <string name="album_details_publishing_date">2020–05–29T00:00:00Z</string>
+    <string name="album_details_duration">5312</string>
+    <string name="album_details_number_of_tracks">22 %s Track</string>
+
+    <!-- Song Details -->
+    <string name="song_details_releases">New Releases</string>
+    <string name="song_details_start_duration">0:0</string>
+    <string name="song_details_end_duration">1:40</string>
 
 
     <!--Errors -->

@@ -4,9 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mondia.databinding.ItemAlbumBinding
-import com.mondia.databinding.ItemSongBinding
 import com.mondia.model.entity.home.Album
-import com.mondia.model.entity.home.Song
 import com.mondia.ui.home.HomeViewModel
 
 class AlbumsAdapter(
@@ -25,5 +23,13 @@ class AlbumsAdapter(
 
     override fun getItemCount(): Int {
         return albumsList.size
+    }
+
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return position
     }
 }

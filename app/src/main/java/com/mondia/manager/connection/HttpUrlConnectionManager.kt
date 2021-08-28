@@ -12,15 +12,25 @@ object HttpUrlConnectionManager {
     private lateinit var connection: HttpURLConnection
     private var dataResponse: String = ""
 
-    fun getHttpInstance(url: URL): String {
+    fun getHttpInstance(url: URL, requestMethod: String, token: String): String {
 
         try {
             connection = url.openConnection() as HttpURLConnection
-            connection.requestMethod = Constants.GET
-            connection.setRequestProperty(
-                "Authorization",
-                "Bearer " + "C3e3afd6e-bc93-40cd-9685-9f2dc81d2720"
-            )
+            connection.requestMethod = requestMethod
+
+            if (requestMethod == Constants.GET) {
+                connection.setRequestProperty(
+                    ApiEndPoints.AUTHORIZATION,
+                    ApiEndPoints.BEARER + token
+                )
+            } else {
+                connection.setRequestProperty(
+                    "X-MM-GATEWAY-KEY",
+                    "G2269608a-bf41-2dc7-cfea-856957fcab1e"
+                )
+                connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded")
+            }
+
             connection.useCaches = false
             connection.doInput = true
             connection.doOutput = false
@@ -39,17 +49,19 @@ object HttpUrlConnectionManager {
             return dataResponse
         }
 
-        val bufferedInputStream = BufferedInputStream(connection.inputStream)
-        val bufferedReader = bufferedInputStream.bufferedReader()
-        val strBuffer = StringBuffer()
+        try {
+            val bufferedInputStream = BufferedInputStream(connection.inputStream)
+            val bufferedReader = bufferedInputStream.bufferedReader()
+            val strBuffer = StringBuffer()
 
-        for (line in bufferedReader.readLines()) {
-            strBuffer.append(line)
+            for (line in bufferedReader.readLines()) {
+                strBuffer.append(line)
+            }
+
+            bufferedReader.close()
+            dataResponse = strBuffer.toString()
+        } catch (e: Exception) {
         }
-
-        bufferedReader.close()
-
-        dataResponse = strBuffer.toString()
         return dataResponse
     }
 
