@@ -83,8 +83,10 @@ class HomeViewModel(
 
     //Validation
     private fun validateQuery(query: String): Boolean {
-        if(query.length<2 || query.isEmpty())
+        if(query.length<2 || query.isEmpty()) {
+            ResponseManager.failed("length must be at least 2 characters long")
             return false
+        }
         return true
     }
 

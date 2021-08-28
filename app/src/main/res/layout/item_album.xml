@@ -32,17 +32,15 @@
             android:layout_height="@dimen/dp120w"
             app:cardCornerRadius="@dimen/dp21w"
             android:onClick="@{()->albumsListener.onAlbumsClicked(albumsObject)}"
-            card_view:cardElevation="@dimen/dp5w"
-            app:elevation="@dimen/dp8w"
+            app:cardElevation="@dimen/dp6w"
             >
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_album_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
+                android:scaleType="fitXY"
                 android:src="@drawable/img_album_cover"
-                android:adjustViewBounds="true"
                 app:imageUrl="@{albumsObject.albumImage}" />
 
         </androidx.cardview.widget.CardView>

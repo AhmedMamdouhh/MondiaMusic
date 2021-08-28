@@ -3,7 +3,6 @@ package com.mondia.repository
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
-import android.util.Log
 import com.mondia.manager.connection.ApiEndPoints
 import com.mondia.manager.connection.HttpUrlConnectionManager
 import com.mondia.manager.connection.WebServiceCallback
@@ -21,7 +20,6 @@ class SplashRepository {
 
         val handler = object : Handler(Looper.getMainLooper()) {
             override fun handleMessage(msg: Message) {
-                Log.e("Repo", "handleMessage: DONE" )
                 callback.onWebServiceError(errorMessage)
                 //TODO: save response with sharedPref or handle connection between viewModel and repo.
             }

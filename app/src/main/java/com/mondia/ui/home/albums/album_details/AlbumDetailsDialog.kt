@@ -8,7 +8,7 @@ import com.mondia.databinding.DialogAlbumDetailsBinding
 import com.mondia.manager.base.BaseBottomSheet
 import com.mondia.manager.utilities.Constants
 
-class AlbumDetailsDialog:BaseBottomSheet() {
+class AlbumDetailsDialog : BaseBottomSheet() {
 
     private lateinit var albumDetailsBinding: DialogAlbumDetailsBinding
 
@@ -18,8 +18,9 @@ class AlbumDetailsDialog:BaseBottomSheet() {
         savedInstanceState: Bundle?
     ): View {
 
-        albumDetailsBinding = DialogAlbumDetailsBinding.inflate(inflater,container,false)
+        albumDetailsBinding = DialogAlbumDetailsBinding.inflate(inflater, container, false)
 
+        albumDetailsBinding.albumListener = this
         getBundleMessage()
 
         return albumDetailsBinding.root
@@ -27,7 +28,14 @@ class AlbumDetailsDialog:BaseBottomSheet() {
 
     private fun getBundleMessage() {
         if (arguments?.containsKey(Constants.BUNDLE_ALBUM) == true) {
-            albumDetailsBinding.albumObject =  requireArguments().getParcelable(Constants.BUNDLE_ALBUM)
+            albumDetailsBinding.albumObject =
+                requireArguments().getParcelable(Constants.BUNDLE_ALBUM)
         }
     }
+
+    fun dismissDialog() {
+        dismiss()
+    }
+
+
 }

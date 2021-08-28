@@ -1,5 +1,6 @@
 package com.mondia.manager.connection
 
+import android.util.Log
 import com.mondia.manager.utilities.Constants
 import java.io.BufferedInputStream
 import java.io.IOException
@@ -9,6 +10,7 @@ import java.net.URL
 
 object HttpUrlConnectionManager {
 
+    private const val TAG = "HttpUrlConnection"
     private lateinit var connection: HttpURLConnection
     private var dataResponse: String = ""
 
@@ -25,10 +27,10 @@ object HttpUrlConnectionManager {
                 )
             } else {
                 connection.setRequestProperty(
-                    "X-MM-GATEWAY-KEY",
-                    "G2269608a-bf41-2dc7-cfea-856957fcab1e"
+                    ApiEndPoints.GATEWAY_KEY,
+                    ApiEndPoints.SECRET_KEY
                 )
-                connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded")
+                connection.setRequestProperty(ApiEndPoints.CONTENT_TYPE, ApiEndPoints.CONTENT_TYPE_VALUE)
             }
 
             connection.useCaches = false
@@ -39,12 +41,15 @@ object HttpUrlConnectionManager {
 
             connection.connect()
         } catch (ce: ConnectException) {
+            Log.e(TAG, "ConnectException: $ e.message")
             dataResponse = Constants.CONNECTION_ERROR
             return dataResponse
         } catch (e: IOException) {
+            Log.e(TAG, "IOException: $ e.message")
             dataResponse = Constants.CONNECTION_ERROR
             return dataResponse
         } catch (e: Exception) {
+            Log.e(TAG, "Exception: $ e.message")
             dataResponse = Constants.EXCEPTION
             return dataResponse
         }
@@ -61,6 +66,7 @@ object HttpUrlConnectionManager {
             bufferedReader.close()
             dataResponse = strBuffer.toString()
         } catch (e: Exception) {
+            Log.e(TAG, "Exception d: $ e.message")
         }
         return dataResponse
     }

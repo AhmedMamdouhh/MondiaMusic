@@ -21,7 +21,10 @@
     <!-- Album Details -->
     <string name="album_details_publishing_date">2020–05–29T00:00:00Z</string>
     <string name="album_details_duration">5312</string>
-    <string name="album_details_number_of_tracks">22 %s Track</string>
+    <string name="album_details_number_of_tracks">22</string>
+    <string name="album_details_number_of_tracks_title">Tracks Number:</string>
+    <string name="album_details_tracks_duration_title">Tracks duration:</string>
+    <string name="album_details_tracks_duration_milli">MS</string>
 
     <!-- Song Details -->
     <string name="song_details_releases">New Releases</string>

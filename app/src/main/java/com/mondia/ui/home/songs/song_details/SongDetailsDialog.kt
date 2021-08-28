@@ -19,11 +19,11 @@ class SongDetailsDialog:BaseBottomSheet() {
     ): View {
 
         songDetailsBinding = DialogSongDetailsBinding.inflate(inflater,container,false)
-
         getBundleMessage()
 
         return songDetailsBinding.root
     }
+
 
     private fun getBundleMessage() {
         if (arguments?.containsKey(Constants.BUNDLE_SONG) == true) {

@@ -41,7 +41,7 @@
                 android:id="@+id/iv_song_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
+                android:scaleType="fitXY"
                 app:imageUrl="@{songObject.songImage}"
                 android:src="@drawable/img_song_cover" />
 

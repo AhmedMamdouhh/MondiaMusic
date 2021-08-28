@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -8,19 +8,33 @@
             name="albumObject"
             type="com.mondia.model.entity.home.Album" />
 
+        <variable
+            name="albumListener"
+            type="com.mondia.ui.home.albums.album_details.AlbumDetailsDialog" />
+
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:onClick="@{()->albumListener.dismissDialog()}"
             android:scaleType="centerCrop"
             android:src="@drawable/img_album_cover"
-            app:imageUrl="@{albumObject.albumImage}"
-            tools:ignore="ContentDescription" />
+            app:imageUrl="@{albumObject.albumImage}" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_album_details_close"
+            android:layout_width="@dimen/dp65w"
+            android:layout_height="@dimen/dp65h"
+            android:layout_margin="@dimen/dp8w"
+            android:padding="@dimen/dp16w"
+            android:src="@drawable/ic_close_white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:layout_width="match_parent"
@@ -82,48 +96,90 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="bottom|end"
                     android:layout_margin="@dimen/dp16w"
+                    android:gravity="bottom|end"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/tv_album_details_number_of_tracks"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:id="@+id/ll_album_details_number_of_tracks_container"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/dp16w"
-                        android:layout_marginEnd="@dimen/dp16w"
-                        android:fontFamily="@font/fredoka_one_regular"
-                        android:text="@string/album_details_number_of_tracks"
-                        android:textColor="@color/colorRed"
-                        android:textSize="@dimen/sp21"
-                        app:text="@{String.valueOf(albumObject.albumNumberOfTracks)}" />
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/tv_album_details_duration"
-                        android:layout_width="wrap_content"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.5"
+                            android:fontFamily="@font/fredoka_one_regular"
+                            android:gravity="start"
+                            android:text="@string/album_details_number_of_tracks_title"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/sp17" />
+
+
+                        <TextView
+                            android:id="@+id/tv_album_details_duration_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:fontFamily="@font/fredoka_one_regular"
+                            android:text="@string/album_details_tracks_duration_title"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/sp17" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_album_details_duration_container"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/dp16w"
-                        android:layout_marginEnd="@dimen/dp16w"
-                        android:fontFamily="@font/montserrat_regular"
-                        android:text="@string/album_details_duration"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/sp16"
-                        app:text="@{String.valueOf(albumObject.albumDuration)}" />
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_album_details_number_of_tracks"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/fredoka_one_regular"
+                            android:gravity="start"
+                            android:text="@string/album_details_number_of_tracks"
+                            android:textColor="@color/colorRed"
+                            android:textSize="@dimen/sp17"
+                            app:text="@{String.valueOf(albumObject.albumNumberOfTracks)}" />
+
+
+                        <TextView
+                            android:id="@+id/tv_album_details_duration"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/fredoka_one_regular"
+                            android:text="@string/album_details_duration"
+                            android:layout_marginEnd="@dimen/dp2w"
+                            android:textColor="@color/colorRed"
+                            android:textSize="@dimen/sp17"
+                            app:text="@{String.valueOf(albumObject.albumDuration)}"
+                            android:layout_marginRight="@dimen/dp2w" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/fredoka_one_regular"
+                            android:text="@string/album_details_tracks_duration_milli"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/sp17" />
+
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/tv_album_details_publishing_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/dp16w"
-                        android:layout_marginEnd="@dimen/dp16w"
-                        android:fontFamily="@font/montserrat_regular"
+                        android:fontFamily="@font/fredoka_one_regular"
                         android:text="@string/album_details_publishing_date"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/sp16"
                         app:text="@{albumObject.albumPublishingDate}" />
-
-
-
 
 
                 </LinearLayout>

@@ -29,6 +29,7 @@ open class BaseBottomSheet : BottomSheetDialogFragment() {
             bottomSheetBehavior = behavior as BottomSheetBehavior<*>?
             bottomSheetBehavior!!.peekHeight = view.measuredHeight
             (finalBottomSheet!!.parent as View).setBackgroundColor(Color.TRANSPARENT)
+            setStyle(STYLE_NORMAL, R.style.CustomBottomSheetDialogTheme);
         }
     }
 }

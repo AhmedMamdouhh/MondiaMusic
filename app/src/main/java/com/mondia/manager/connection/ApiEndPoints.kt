@@ -9,4 +9,8 @@ object ApiEndPoints {
     const val QUERY = "?query="
     const val AUTHORIZATION = "Authorization"
     const val BEARER = "Bearer "
+    const val GATEWAY_KEY = "X-MM-GATEWAY-KEY"
+    const val SECRET_KEY = "G2269608a-bf41-2dc7-cfea-856957fcab1e"
+    const val CONTENT_TYPE = "Content-Type"
+    const val CONTENT_TYPE_VALUE = "application/x-www-form-urlencoded"
 }

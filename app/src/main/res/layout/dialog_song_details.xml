@@ -14,7 +14,18 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimaryDark">
+        android:background="@drawable/grad">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:scaleY="-1"
+            android:src="@drawable/ic_home_color_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:id="@+id/v_song_details_line"
@@ -23,7 +34,7 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/dp8w"
-            android:background="@color/colorLightGrey"
+            android:background="@color/colorAccent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -35,42 +46,47 @@
             android:layout_marginStart="@dimen/dp16w"
             android:layout_marginTop="@dimen/dp16w"
             android:layout_marginEnd="@dimen/dp16w"
-            android:fontFamily="@font/montserrat_regular"
+            android:fontFamily="@font/fredoka_one_regular"
             android:text="@string/song_details_releases"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/sp16"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/sp20"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/v_song_details_line" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/iv_song_details_image"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_song_details_image_container"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp250w"
-            android:layout_marginStart="@dimen/dp16w"
-            android:layout_marginTop="@dimen/dp8w"
-            android:layout_marginEnd="@dimen/dp16w"
-            android:scaleType="centerCrop"
-            app:imageUrl="@{songObject.songImage}"
-            android:src="@drawable/img_song_cover"
+            app:cardCornerRadius="@dimen/dp34w"
+            app:cardUseCompatPadding="true"
+            app:cardElevation="@dimen/dp4w"
+            app:elevation="@dimen/dp8w"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_album_details_artist" />
+            app:layout_constraintTop_toBottomOf="@id/tv_album_details_artist">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_song_cover"
+                app:imageUrl="@{songObject.songImage}" />
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/tv_song_details_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp16w"
-            android:layout_marginTop="@dimen/dp16w"
             android:layout_marginEnd="@dimen/dp16w"
             android:fontFamily="@font/fredoka_one_regular"
             android:text="@string/home_song_name"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="@dimen/sp24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_song_details_image"
+            app:layout_constraintTop_toBottomOf="@+id/cv_song_details_image_container"
             app:text="@{songObject.songTitle}" />
 
         <TextView
@@ -79,9 +95,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp16w"
             android:layout_marginEnd="@dimen/dp16w"
-            android:fontFamily="@font/montserrat_regular"
+            android:fontFamily="@font/arial"
             android:text="@string/home_song_artist_name"
-            android:textColor="@color/colorLightGrey"
+            android:textColor="@color/colorAccent"
             android:textSize="@dimen/sp16"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -89,7 +105,7 @@
             app:text="@{songObject.songArtist}" />
 
 
-        <com.google.android.material.slider.Slider
+        <androidx.appcompat.widget.AppCompatSeekBar
             android:id="@+id/slider_song_details_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -100,76 +116,108 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_song_details_artist"
-            app:thumbColor="@color/colorRed"
-            app:trackHeight="12dp" />
+            app:tickColorInactive="@color/colorPrimary" />
 
         <LinearLayout
             android:id="@+id/ll_song_details_duration_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp16w"
+            android:layout_marginEnd="@dimen/dp16w"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="@dimen/dp16w"
-            android:layout_marginEnd="@dimen/dp16w"
             app:layout_constraintTop_toBottomOf="@+id/slider_song_details_bar">
 
-        <TextView
-            android:id="@+id/tv_song_details_start_duration"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:gravity="start"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_regular"
-            android:text="@string/song_details_start_duration"
-            android:textColor="@color/colorLightGrey"
-            android:textSize="@dimen/sp12" />
+            <TextView
+                android:id="@+id/tv_song_details_start_duration"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/arial"
+                android:gravity="start"
+                android:text="@string/song_details_start_duration"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/sp12" />
 
             <TextView
                 android:id="@+id/tv_song_details_end_duration"
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:gravity="end"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_regular"
+                android:layout_weight="1"
+                android:fontFamily="@font/arial"
+                android:gravity="end"
                 android:text="@string/song_details_end_duration"
-                android:textColor="@color/colorLightGrey"
+                android:textColor="@color/colorAccent"
                 android:textSize="@dimen/sp12"
-                app:text="@{String.valueOf(songObject.songDuration)}"/>
+                app:text="@{String.valueOf(songObject.songDuration)}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_song_details_play_music_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp24w"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_song_details_duration_container">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp25h"
+                android:layout_weight="1"
+                android:src="@drawable/ic_backward" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp25h"
+                android:layout_weight="1"
+                android:src="@drawable/ic_play" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp25h"
+                android:layout_weight="1"
+                android:scaleX="-1"
+                android:src="@drawable/ic_backward" />
+
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp24w"
+            android:layout_marginTop="@dimen/dp40w"
+            android:layout_marginEnd="@dimen/dp24w"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/ll_song_details_duration_container"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="@dimen/dp24w">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_song_details_play_music_container">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="@dimen/dp25h"
-                android:src="@drawable/ic_backward"/>
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="@dimen/dp25h"
-                android:src="@drawable/ic_play"/>
+                android:src="@drawable/ic_shuffle" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="0dp"
+                android:layout_height="@dimen/dp25h"
+                android:layout_weight="1"
+                android:src="@drawable/ic_volume" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp25h"
                 android:layout_weight="1"
                 android:scaleX="-1"
-                android:layout_height="@dimen/dp25h"
-                android:src="@drawable/ic_backward"/>
+                android:src="@drawable/ic_queue_music" />
 
 
         </LinearLayout>
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
