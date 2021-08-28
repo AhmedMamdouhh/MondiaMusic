@@ -50,6 +50,7 @@ class Album() : BaseObservable() , Parcelable {
             notifyPropertyChanged(BR.albumDuration)
         }
 
+
     @get:Bindable
     var albumArtist: String = ""
         set(value) {
@@ -91,5 +92,7 @@ class Album() : BaseObservable() , Parcelable {
             return arrayOfNulls(size)
         }
     }
+
+
 
 }

@@ -28,19 +28,22 @@
         <!-- album image -->
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_album_image"
-            android:layout_width="@dimen/dp150w"
-            android:layout_height="@dimen/dp120w"
+            android:layout_width="@dimen/dp180w"
+            android:layout_height="@dimen/dp140w"
             app:cardCornerRadius="@dimen/dp21w"
             android:onClick="@{()->albumsListener.onAlbumsClicked(albumsObject)}"
-            app:cardElevation="@dimen/dp6w"
+            app:cardUseCompatPadding="true"
+            card_view:cardElevation="@dimen/dp4w"
             >
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_album_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="fitXY"
+                android:scaleType="centerCrop"
+
                 android:src="@drawable/img_album_cover"
+                android:adjustViewBounds="true"
                 app:imageUrl="@{albumsObject.albumImage}" />
 
         </androidx.cardview.widget.CardView>

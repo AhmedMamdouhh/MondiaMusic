@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.mondia.R
 import com.mondia.databinding.DialogSongDetailsBinding
 import com.mondia.manager.base.BaseBottomSheet
 import com.mondia.manager.utilities.Constants
@@ -22,6 +23,11 @@ class SongDetailsDialog:BaseBottomSheet() {
         getBundleMessage()
 
         return songDetailsBinding.root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setStyle(STYLE_NORMAL, R.style.CustomBottomSheetDialogTheme);
     }
 
 

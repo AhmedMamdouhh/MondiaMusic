@@ -14,5 +14,7 @@ class SongsViewHolder(
     fun bind(song:Song){
         binding.songObject = song
         binding.songListener = homeViewModel
+
+
     }
 }

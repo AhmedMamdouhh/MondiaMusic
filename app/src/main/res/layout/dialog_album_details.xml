@@ -23,7 +23,6 @@
             android:layout_height="match_parent"
             android:onClick="@{()->albumListener.dismissDialog()}"
             android:scaleType="centerCrop"
-            android:src="@drawable/img_album_cover"
             app:imageUrl="@{albumObject.albumImage}" />
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -178,7 +177,7 @@
                         android:fontFamily="@font/fredoka_one_regular"
                         android:text="@string/album_details_publishing_date"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/sp16"
+                        android:textSize="@dimen/sp13"
                         app:text="@{albumObject.albumPublishingDate}" />
 
 

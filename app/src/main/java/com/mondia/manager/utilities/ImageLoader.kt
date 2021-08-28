@@ -16,19 +16,21 @@ import kotlin.concurrent.thread
 @BindingAdapter("imageUrl")
 fun ImageView.bindImage(imgUrl: String?) {
 
-    imgUrl?.let {
-        val imgUri = imgUrl.toUri().buildUpon().scheme("https").build().toString()
+    if(this.drawable == null) {
+
+        imgUrl?.let {
+            val imgUri = imgUrl.toUri().buildUpon().scheme("https").build().toString()
 
 
-        val uiHandler = Handler(Looper.getMainLooper())
-        thread(start = true) {
-            val bitmap = downloadBitmap(imgUri)
-            uiHandler.post {
-                this.setImageBitmap(bitmap)
+            val uiHandler = Handler(Looper.getMainLooper())
+            thread(start = true) {
+                val bitmap = downloadBitmap(imgUri)
+                uiHandler.post {
+                    this.setImageBitmap(bitmap)
+                }
             }
         }
     }
-
 
 }
 

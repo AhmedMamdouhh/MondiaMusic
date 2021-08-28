@@ -33,17 +33,16 @@
             android:layout_width="@dimen/dp240w"
             android:layout_height="@dimen/dp190w"
             app:cardCornerRadius="@dimen/dp24w"
-            card_view:cardElevation="@dimen/dp8w"
-            android:elevation="@dimen/dp8w"
-            tools:targetApi="lollipop">
+            app:cardUseCompatPadding="true"
+            card_view:cardElevation="@dimen/dp4w">
 
-            <androidx.appcompat.widget.AppCompatImageView
+            <ImageView
                 android:id="@+id/iv_song_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="fitXY"
+                android:scaleType="centerCrop"
                 app:imageUrl="@{songObject.songImage}"
-                android:src="@drawable/img_song_cover" />
+                tools:ignore="ContentDescription" />
 
         </androidx.cardview.widget.CardView>
         <!-- Song name -->

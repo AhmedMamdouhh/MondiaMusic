@@ -1,11 +1,8 @@
 package com.mondia.manager.base
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.mondia.manager.connection.Resource
-import com.mondia.manager.utilities.Event
-import com.mondia.model.entity.home.Song
 
 object ResponseManager
 {
@@ -24,7 +21,6 @@ object ResponseManager
         resource.resourceStatus = status
         resource.message = message
         _observeResponseManager.value = resource
-        Log.e("safdsfdsf", "setResponseObject: ${resource.resourceStatus}" )
     }
 
 
