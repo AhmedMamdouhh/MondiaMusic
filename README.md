@@ -14,6 +14,7 @@
 - Dependency injection pattern.
 - Singleton pattern.
 - Observer pattern.
+- Repository pattern
 - Callbacks.
 - Motion layout animation.
 - Databinding.
