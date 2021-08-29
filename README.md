@@ -16,3 +16,4 @@
 - Observer pattern.
 - Callbacks.
 - Motion layout animation.
+- Databinding.
