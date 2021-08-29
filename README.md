@@ -1,6 +1,8 @@
 # MondiaMusic
 
-![ModiaMusic](https://user-images.githubusercontent.com/34347060/131249062-6a62b0c1-18fd-4ea7-8fd8-4588e84efd10.gif)
+
+https://user-images.githubusercontent.com/34347060/131255346-555545aa-c723-46fd-9abd-30f095076e41.mp4
+
 
 **Intrduction**
 - MondiaMusic is a simple application with **NO THIRD-PARTY LIBRARIES**, all the code written with just Android Studio SDK.
